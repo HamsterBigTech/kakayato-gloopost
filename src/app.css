@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+@font-face {
+	font-family: 'Ubuntu Regular';
+	src: url('/fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+}
+
+@theme {
+	--font-sans: 'Ubuntu Regular';
+}
