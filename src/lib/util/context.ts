@@ -1,7 +1,5 @@
 import { getContext, setContext } from 'svelte';
 
-export type Inner<T> = { val: T | null };
-
 export default class Context<T> {
 	private readonly key: string;
 
@@ -9,11 +7,11 @@ export default class Context<T> {
 		this.key = key;
 	}
 
-	set(v: Inner<T>) {
+	set(v: T) {
 		setContext(this.key, v);
 	}
 
-	get(): Inner<T> {
-		return getContext<Inner<T>>(this.key);
+	get(): T {
+		return getContext(this.key);
 	}
 }

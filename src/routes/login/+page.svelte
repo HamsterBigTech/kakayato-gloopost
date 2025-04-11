@@ -9,12 +9,10 @@
 	const session = sessionCtx.get();
 
 	$effect(() => {
-		if (session.val !== null) goto('/');
+		if (session.session !== null) goto('/');
 	});
 </script>
 
 <div class="w-200 m-auto">
-	{#if supabase.val !== null}
-		<Auth supabaseClient={supabase.val} appearance={{ theme: ThemeSupa }} />
-	{/if}
+	<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
 </div>
