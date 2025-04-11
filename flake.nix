@@ -12,6 +12,7 @@
   in {
     devShell.${system} = pkgs.mkShell {
       packages = with pkgs; [
+        supabase-cli
         nodejs
         pnpm
       ];
