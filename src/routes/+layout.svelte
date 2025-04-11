@@ -1,32 +1,37 @@
 <script lang="ts">
 	import '../app.css';
-	import { connect, setClient } from '$lib/supabase';
-	import { type SessionState, setSession } from '$lib/session';
+	import { type SupabaseContext, connect, setClient } from '$lib/supabase';
+	import { type SessionContext, setSession } from '$lib/session';
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
 
-	const client = connect();
+	const client = $state<SupabaseContext>({ client: null });
+	const session = $state<SessionContext>({ session: null });
+
 	setClient(client);
+	setSession(session);
 
-	let state = $state<SessionState>({ session: null });
-	client.auth.onAuthStateChange((_, s) => {
-		state.session = s;
+	onMount(() => {
+		client.client = connect();
+
+		client.client!.auth.onAuthStateChange((_, s) => {
+			session.session = s;
+		});
 	});
-
-	setSession(state);
 </script>
 
 <nav class="border-b-1 border-black m-0 p-2 flex justify-between items-center">
 	<a class="underline p-2" href="/">Home</a>
 
-	{#if state.session === null}
+	{#if session?.session === null}
 		<a class="border-1 w-20 text-center border-black hover:bg-gray-300 p-2 rounded-md" href="/login"
 			>Login</a
 		>
 	{:else}
 		<button
 			class="border-1 w-20 text-center border-black hover:bg-gray-300 p-2 rounded-md"
-			onclick={() => client.auth.signOut()}>Logout</button
+			onclick={() => client.client?.auth.signOut()}>Logout</button
 		>
 	{/if}
 </nav>

@@ -14,5 +14,7 @@
 </script>
 
 <div class="w-200 m-auto">
-	<Auth supabaseClient={client} appearance={{ theme: ThemeSupa }} />
+	{#if client.client !== null}
+		<Auth supabaseClient={client.client} appearance={{ theme: ThemeSupa }} />
+	{/if}
 </div>
