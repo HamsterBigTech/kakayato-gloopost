@@ -2,6 +2,7 @@
 	import '../app.css';
 	import { defaultClient, supabaseCtx } from '$lib/service/supabase';
 	import { sessionCtx } from '$lib/service/session';
+	import { bookCtx, BookService } from '$lib/service/book';
 	import { onMount } from 'svelte';
 	import type { SupabaseClient, Session } from '@supabase/supabase-js';
 
@@ -13,6 +14,9 @@
 	const session = $state<{ session: Session | null }>({ session: null });
 	sessionCtx.set(session);
 
+	const books = $state<BookService>(new BookService(supabase));
+	bookCtx.set(books);
+
 	onMount(() => {
 		supabase.auth.onAuthStateChange((_, s) => {
 			session.session = s;
@@ -21,7 +25,10 @@
 </script>
 
 <nav class="border-b-1 border-black m-0 p-2 flex justify-between items-center">
-	<a class="underline p-2" href="/">Home</a>
+	<div class="flex gap-2">
+		<a class="underline p-2" href="/">Home</a>
+		<a class="underline p-2" href="/feed">Feed</a>
+	</div>
 
 	{#if session.session === null}
 		<a class="border-1 w-20 text-center border-black hover:bg-gray-300 p-2 rounded-md" href="/login"
