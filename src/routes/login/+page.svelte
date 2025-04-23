@@ -13,6 +13,6 @@
 	});
 </script>
 
-<div class="w-200 m-auto">
+<div class="w-150 m-auto">
 	<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
 </div>
