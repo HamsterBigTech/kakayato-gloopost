@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import { type Book, bookCtx } from '$lib/service/book';
 	import { sessionCtx } from '$lib/service/session';
-	import { onMount } from 'svelte';
+	import Button from '$lib/components/button.svelte';
 
 	const books = bookCtx.get();
 	const session = sessionCtx.get();
@@ -37,22 +38,26 @@
 				<img src={book.imageUrl} class="w-full rounded-md" />
 
 				<div class="flex justify-stretch gap-2">
-					{@render btn("Won't read", () => {
-						books.dislikeBook(book.id);
-						selectedBook = books.getRandomBook();
-					})}
-					{@render btn('Will read', () => {
-						books.likeBook(book.id);
-						selectedBook = books.getRandomBook();
-					})}
+					<Button
+						classes="w-full text-xl"
+						onClick={() => {
+							books.dislikeBook(book.id);
+							selectedBook = books.getRandomBook();
+						}}
+					>
+						Won't read
+					</Button>
+					<Button
+						classes="w-full text-xl"
+						onClick={() => {
+							books.likeBook(book.id);
+							selectedBook = books.getRandomBook();
+						}}
+					>
+						Will read
+					</Button>
 				</div>
 			</div>
 		</div>
 	{/await}
 </div>
-
-{#snippet btn(title: string, onclick: () => void)}
-	<button class="w-full border-1 border-black hover:bg-gray-300 rounded-md text-xl" {onclick}
-		>{title}</button
-	>
-{/snippet}

@@ -11,12 +11,18 @@ export class BookService {
 	// TODO: actual work in these methods
 
 	getRandomBook(): Promise<Book> {
-		return new Promise((res) => setTimeout(() => res({
-			id: 'huh',
-			authors: ['Никто Иван Иванович', 'Никто Петр Петрович'],
-			title: 'HTTP для маленьких и тупых',
-			imageUrl: 'https://http.cat/400.jpg'
-		}), 500));
+		return new Promise((res) =>
+			setTimeout(
+				() =>
+					res({
+						id: 'huh',
+						authors: ['Никто Иван Иванович', 'Никто Петр Петрович'],
+						title: 'HTTP для маленьких и тупых',
+						imageUrl: 'https://http.cat/400.jpg'
+					}),
+				500
+			)
+		);
 	}
 
 	likeBook(id: string) {
