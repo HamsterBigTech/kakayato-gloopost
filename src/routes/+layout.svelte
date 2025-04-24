@@ -1,10 +1,13 @@
 <script lang="ts">
 	import '../app.css';
+	import { onMount } from 'svelte';
+	import type { SupabaseClient, Session } from '@supabase/supabase-js';
+	import { goto } from '$app/navigation';
+	import Button from '$lib/components/button.svelte';
 	import { defaultClient, supabaseCtx } from '$lib/service/supabase';
 	import { sessionCtx } from '$lib/service/session';
 	import { bookCtx, BookService } from '$lib/service/book';
-	import { onMount } from 'svelte';
-	import type { SupabaseClient, Session } from '@supabase/supabase-js';
+	import Link from '$lib/components/link.svelte';
 
 	let { children } = $props();
 
@@ -26,19 +29,14 @@
 
 <nav class="border-b-1 border-black m-0 p-2 flex justify-between items-center">
 	<div class="flex gap-2">
-		<a class="underline p-2" href="/">Home</a>
-		<a class="underline p-2" href="/feed">Feed</a>
+		<Link href="/">Home</Link>
+		<Link href="/feed">Feed</Link>
 	</div>
 
 	{#if session.session === null}
-		<a class="border-1 w-20 text-center border-black hover:bg-gray-300 p-2 rounded-md" href="/login"
-			>Login</a
-		>
+		<Button classes="w-20" onClick={() => goto('/login')}>Login</Button>
 	{:else}
-		<button
-			class="border-1 w-20 text-center border-black hover:bg-gray-300 p-2 rounded-md"
-			onclick={() => supabase.auth.signOut()}>Logout</button
-		>
+		<Button classes="w-20" onClick={() => supabase.auth.signOut()}>Logout</Button>
 	{/if}
 </nav>
 
