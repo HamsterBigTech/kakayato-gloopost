@@ -10,7 +10,7 @@ export class BookService {
 
 	async getRandomBook(): Promise<Book> {
 		const book = await this.supabase.functions.invoke('recommend');
-		return { id: 0, ...(book.data as Omit<Book, 'id'>) };
+		return book.data as Book;
 	}
 
 	private async insert(row: { book_id: number; will_read: boolean }) {
