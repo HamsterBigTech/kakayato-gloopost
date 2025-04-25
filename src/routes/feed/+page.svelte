@@ -27,21 +27,17 @@
 	{:then book}
 		<div class="flex justify-center">
 			<div class="w-150 p-2 border-black border-1 rounded-md flex flex-col text-center gap-2">
-				<div class="m-0 flex flex-row justify-around">
-					{#each book.authors as author (author)}
-						<p class="text-xl whitespace-pre-line">{author.split(/\s+/).join('\n')}</p>
-					{/each}
-				</div>
+				<p class="text-xl">{book.author}</p>
 
 				<h1 class="text-4xl m-5">{book.title}</h1>
 
-				<img src={book.imageUrl} class="w-full rounded-md" />
+				<img src={book.image} class="w-full rounded-md" />
 
 				<div class="flex justify-stretch gap-2">
 					<Button
 						classes="w-full text-xl"
-						onClick={() => {
-							books.dislikeBook(book.id);
+						onClick={async () => {
+							await books.dislikeBook(book.id);
 							selectedBook = books.getRandomBook();
 						}}
 					>
@@ -49,8 +45,8 @@
 					</Button>
 					<Button
 						classes="w-full text-xl"
-						onClick={() => {
-							books.likeBook(book.id);
+						onClick={async () => {
+							await books.likeBook(book.id);
 							selectedBook = books.getRandomBook();
 						}}
 					>

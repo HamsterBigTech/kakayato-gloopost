@@ -8,30 +8,27 @@ export class BookService {
 		this.supabase = supabase;
 	}
 
-	// TODO: actual work in these methods
-
-	getRandomBook(): Promise<Book> {
-		return new Promise((res) =>
-			setTimeout(
-				() =>
-					res({
-						id: 'huh',
-						authors: ['Никто Иван Иванович', 'Никто Петр Петрович'],
-						title: 'HTTP для маленьких и тупых',
-						imageUrl: 'https://http.cat/400.jpg'
-					}),
-				500
-			)
-		);
+	async getRandomBook(): Promise<Book> {
+		const book = await this.supabase.functions.invoke('recommend');
+		return { id: 0, ...(book.data as Omit<Book, 'id'>) };
 	}
 
-	likeBook(id: string) {
-		console.log(`book ${id} liked`);
-		return Promise.resolve();
+	private async insert(row: { book_id: number; will_read: boolean }) {
+		const { data, error } = await this.supabase.auth.getUser();
+
+		if (error !== null) {
+			console.log(error);
+			return;
+		}
+
+		await this.supabase.from('books').insert({ ...row, user_id: data.user.id });
 	}
 
-	dislikeBook(id: string) {
-		console.log(`book ${id} disliked`);
-		return Promise.resolve();
+	likeBook(id: Book['id']) {
+		return this.insert({ book_id: id, will_read: true });
+	}
+
+	dislikeBook(id: Book['id']) {
+		return this.insert({ book_id: id, will_read: false });
 	}
 }
