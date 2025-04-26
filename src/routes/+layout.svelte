@@ -28,6 +28,13 @@
 	});
 </script>
 
+{#snippet link(href: string, text: string)}
+	<a
+		class={`transition p-3 rounded-md ${path === href ? 'bg-gray-200' : 'hover:bg-gray-200'}`}
+		{href}>{text}</a
+	>
+{/snippet}
+
 <div class="flex flex-row h-100vh">
 	<nav class="w-75 h-screen m-0 flex flex-col border-r-1 border-gray-300">
 		<div class="p-2 border-b-1 border-gray-300">
@@ -35,14 +42,9 @@
 		</div>
 
 		<div class="p-2 flex flex-col gap-2">
-			<a
-				class={`transition p-3 rounded-md ${path === '/' ? 'bg-gray-200' : 'hover:bg-gray-200'}`}
-				href="/">Home</a
-			>
-			<a
-				class={`transition p-3 rounded-md ${path === '/feed' ? 'bg-gray-200' : 'hover:bg-gray-200'}`}
-				href="/feed">Feed</a
-			>
+			{@render link('/', 'Home')}
+			{@render link('/feed', 'Feed')}
+			{@render link('/viewed', 'Viewed')}
 		</div>
 
 		<div class="mt-auto w-full border-t-1 border-gray-300 p-2">

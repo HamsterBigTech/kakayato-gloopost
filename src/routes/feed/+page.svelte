@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { type Book, bookCtx } from '$lib/service/book';
 	import { sessionCtx } from '$lib/service/session';
+	import BookView from '$lib/components/book.svelte';
 
 	const books = bookCtx.get();
 	const session = sessionCtx.get();
@@ -27,16 +28,7 @@
 		{#await selectedBook}
 			<h1 class="text-center text-3xl">Loading...</h1>
 		{:then book}
-			<div class="flex justify-center">
-				<div class="w-100 shadow-xl rounded-xl flex flex-col overflow-hidden">
-					<img class="w-full h-150" src={book.image} />
-
-					<div class="m-4 flex flex-col">
-						<h1 class="text-xl font-bold">{book.title}</h1>
-						<p class="text-sm">{book.author}</p>
-					</div>
-				</div>
-			</div>
+			<BookView {book} />
 
 			<div class="flex gap-8 w-fit mt-8">
 				<button

@@ -4,3 +4,7 @@ export type Book = {
 	title: string;
 	image: string;
 };
+
+export type ViewedBook = Book & {
+	willRead: boolean;
+};
