@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import { type Book, bookCtx } from '$lib/service/book';
 	import { sessionCtx } from '$lib/service/session';
-	import Button from '$lib/components/button.svelte';
 
 	const books = bookCtx.get();
 	const session = sessionCtx.get();
@@ -21,39 +20,44 @@
 	});
 </script>
 
-<div class="mt-5">
-	{#await selectedBook}
-		<h1 class="text-center text-3xl">Loading...</h1>
-	{:then book}
-		<div class="flex justify-center">
-			<div class="w-150 p-2 border-black border-1 rounded-md flex flex-col text-center gap-2">
-				<p class="text-xl">{book.author}</p>
+<div class="flex flex-col">
+	<h1 class="mt-8 text-3xl text-center">Dicsover Your Next Read</h1>
 
-				<h1 class="text-4xl m-5">{book.title}</h1>
+	<div class="mt-8 flex flex-col items-center">
+		{#await selectedBook}
+			<h1 class="text-center text-3xl">Loading...</h1>
+		{:then book}
+			<div class="flex justify-center">
+				<div class="w-100 shadow-xl rounded-xl flex flex-col overflow-hidden">
+					<img class="w-full h-150" src={book.image} />
 
-				<img src={book.image} class="w-full rounded-md" />
-
-				<div class="flex justify-stretch gap-2">
-					<Button
-						classes="w-full text-xl"
-						onClick={async () => {
-							await books.dislikeBook(book.id);
-							selectedBook = books.getRandomBook();
-						}}
-					>
-						Won't read
-					</Button>
-					<Button
-						classes="w-full text-xl"
-						onClick={async () => {
-							await books.likeBook(book.id);
-							selectedBook = books.getRandomBook();
-						}}
-					>
-						Will read
-					</Button>
+					<div class="m-4 flex flex-col">
+						<h1 class="text-xl font-bold">{book.title}</h1>
+						<p class="text-sm">{book.author}</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	{/await}
+
+			<div class="flex gap-8 w-fit mt-8">
+				<button
+					class="transition w-15 h-15 text-2xl rounded-full border-2 hover:bg-gray-200 active:bg-gray-300 border-red-300"
+					onclick={async () => {
+						await books.dislikeBook(book.id);
+						selectedBook = books.getRandomBook();
+					}}
+				>
+					👎
+				</button>
+				<button
+					class="transition w-15 h-15 text-2xl rounded-full border-2 hover:bg-gray-200 active:bg-gray-300 border-green-300"
+					onclick={async () => {
+						await books.likeBook(book.id);
+						selectedBook = books.getRandomBook();
+					}}
+				>
+					👍
+				</button>
+			</div>
+		{/await}
+	</div>
 </div>
