@@ -1,5 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Book } from './types';
+import type { Book, ViewedBook } from './types';
 
 export class BookService {
 	private readonly supabase: SupabaseClient;
@@ -11,6 +11,11 @@ export class BookService {
 	async getRandomBook(): Promise<Book> {
 		const book = await this.supabase.functions.invoke('recommend');
 		return book.data as Book;
+	}
+
+	async getViewed(): Promise<ViewedBook[]> {
+		const books = await this.supabase.functions.invoke('all-books');
+		return books.data as ViewedBook[];
 	}
 
 	private async insert(row: { book_id: number; will_read: boolean }) {

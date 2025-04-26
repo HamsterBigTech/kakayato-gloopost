@@ -316,4 +316,15 @@ import_map = "./functions/recommend/deno.json"
 entrypoint = "./functions/recommend/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
-static_files = ["./functions/recommend/famous.txt", "./functions/recommend/similarity.txt"]
+static_files = ["./functions/_shared/famous.txt", "./functions/_shared/similarity.txt"]
+
+[functions.all-books]
+enabled = true
+verify_jwt = true
+import_map = "./functions/all-books/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/all-books/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+static_files = ["./functions/_shared/famous.txt"]
