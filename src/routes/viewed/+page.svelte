@@ -27,14 +27,18 @@
 		{#if viewedBooks.length > 0}
 			<div class="flex flex-row gap-2">
 				<button
-					class="transition rounded-md hover:bg-gray-200 active:bg-gray-300 p-3 w-20"
-					onclick={prevPage}>Prev</button
+					class="transition rounded-md hover:bg-green-50 hover:text-green-900 active:bg-green-100 p-3 w-20"
+					onclick={prevPage}
 				>
+					Prev
+				</button>
 				<p class="m-auto p-3">Page {page + 1} of {maxPages}</p>
 				<button
-					class="transition rounded-md hover:bg-gray-200 active:bg-gray-300 p-3 w-20"
-					onclick={nextPage}>Next</button
+					class="transition rounded-md hover:bg-green-50 hover:text-green-900 active:bg-green-100 p-3 w-20"
+					onclick={nextPage}
 				>
+					Next
+				</button>
 			</div>
 		{/if}
 	</div>

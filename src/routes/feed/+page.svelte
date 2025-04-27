@@ -32,7 +32,7 @@
 
 			<div class="flex gap-8 w-fit mt-8">
 				<button
-					class="transition w-15 h-15 text-2xl rounded-full border-2 hover:bg-gray-200 active:bg-gray-300 border-red-300"
+					class="transition w-15 h-15 text-2xl rounded-full border-2 hover:bg-red-50 active:bg-red-100 border-red-300"
 					onclick={async () => {
 						await books.dislikeBook(book.id);
 						selectedBook = books.getRandomBook();
@@ -41,7 +41,7 @@
 					👎
 				</button>
 				<button
-					class="transition w-15 h-15 text-2xl rounded-full border-2 hover:bg-gray-200 active:bg-gray-300 border-green-300"
+					class="transition w-15 h-15 text-2xl rounded-full border-2 hover:bg-green-50 active:bg-green-100 border-green-300"
 					onclick={async () => {
 						await books.likeBook(book.id);
 						selectedBook = books.getRandomBook();
