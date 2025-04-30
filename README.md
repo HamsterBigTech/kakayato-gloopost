@@ -8,13 +8,11 @@ An app for finding interesting books to read.
 - Deployment: [Netlify](https://www.netlify.com/)
 
 ## Development
-### Setting up Supabase
 First setup a supabase project (or run one
 [locally](https://supabase.com/docs/reference/cli/supabase-start)). After doing
 that put it's URL and key into the `.env` file (an example can be found in
 `.env.example`).
 
-### Scripts
 This project uses pnpm v10.8.0 as the package manager. It can be installed with
 corepack or alternatively via nix (`flake.nix` provides a dev-shell).
 
