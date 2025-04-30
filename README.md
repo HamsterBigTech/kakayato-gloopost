@@ -1,38 +1,33 @@
-# sv
+# BookMatch
+An app for finding interesting books to read.
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Stack
+- Database, Auth & Edge-Functions: [supabase](https://supabase.com/)
+- Frontend: [Svelte & SvelteKit](https://svelte.dev/)
+  - Styles: [Tailwind CSS](https://tailwindcss.com/)
+- Deployment: [Netlify](https://www.netlify.com/)
 
-## Creating a project
+## Development
+### Setting up Supabase
+First setup a supabase project (or run one
+[locally](https://supabase.com/docs/reference/cli/supabase-start)). After doing
+that put it's URL and key into the `.env` file (an example can be found in
+`.env.example`).
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Scripts
+This project uses pnpm v10.8.0 as the package manager. It can be installed with
+corepack or alternatively via nix (`flake.nix` provides a dev-shell).
 
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+To install dependencies run:
+```sh
+pnpm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+Useful scripts include:
+```sh
+pnpm dev   # run in watch mode
+pnpm build # build the app
+pnpm check # run type-check
+pnpm lint  # run the linter (eslint)
+pnpm fmt   # format the code (prettier)
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
