@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { supabaseCtx } from '$lib/service/supabase';
-	import { Auth } from '@supabase/auth-ui-svelte';
-	import { ThemeSupa } from '@supabase/auth-ui-shared';
 	import { sessionCtx } from '$lib/service/session';
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
+	import Auth from '$lib/components/auth.svelte';
 
 	const supabase = supabaseCtx.get();
 	const session = sessionCtx.get();
@@ -14,6 +13,6 @@
 	});
 </script>
 
-<div class="w-150 m-auto">
-	<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
+<div class="w-150 m-auto pt-8">
+	<Auth {supabase} />
 </div>

@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@supabase/auth-ui-shared':
-        specifier: ^0.1.8
-        version: 0.1.8(@supabase/supabase-js@2.103.0)
-      '@supabase/auth-ui-svelte':
-        specifier: ^0.2.9
-        version: 0.2.9(@supabase/supabase-js@2.103.0)
       '@supabase/supabase-js':
         specifier: ^2.103.0
         version: 2.103.0
@@ -439,22 +433,9 @@ packages:
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
-  '@stitches/core@1.2.8':
-    resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==}
-
   '@supabase/auth-js@2.103.0':
     resolution: {integrity: sha512-6zAanO6c+6gpHOlt5Lb9TlBBkJdZiUWkWCJKAxzkywBDcwaHlLJKXnjQGX6GyVCyKRR1e7sTq4re/yRTH6U/9A==}
     engines: {node: '>=20.0.0'}
-
-  '@supabase/auth-ui-shared@0.1.8':
-    resolution: {integrity: sha512-ouQ0DjKcEFg+0gZigFIEgu01V3e6riGZPzgVD0MJsCBNsMsiDT74+GgCEIElMUpTGkwSja3xLwdFRFgMNFKcjg==}
-    peerDependencies:
-      '@supabase/supabase-js': ^2.21.0
-
-  '@supabase/auth-ui-svelte@0.2.9':
-    resolution: {integrity: sha512-oc+SRS7ykc5FCssoqT0IiK5KF/obwnWko5ePaaMTDwUEQOavv+O8/poAh2lRTKRJCqJMqOOpMS/lUE6pHcma3g==}
-    peerDependencies:
-      '@supabase/supabase-js': ^2.21.0
 
   '@supabase/functions-js@2.103.0':
     resolution: {integrity: sha512-YrneV2NjskUkkmkZ2Jt2n3elBgbWzV4Y1M9MM370z2Zd5ZPFqFbY8KIoPwuNjtAGE9YrpKBxnbZqeF07BiN9Og==}
@@ -1217,10 +1198,6 @@ packages:
       svelte:
         optional: true
 
-  svelte@3.59.2:
-    resolution: {integrity: sha512-vzSyuGr3eEoAtT/A6bmajosJZIUWySzY2CzB3w2pgPvnkUjGqlDnsNnA0PMO+mMAhuyMul6C2uuZzY6ELSkzyA==}
-    engines: {node: '>= 8'}
-
   svelte@5.55.3:
     resolution: {integrity: sha512-dS1N+i3bA1v+c4UDb750MlN5vCO82G6vxh8HeTsPsTdJ1BLsN1zxSyDlIdBBqUjqZ/BxEwM8UrFf98aaoVnZFQ==}
     engines: {node: '>=18'}
@@ -1589,22 +1566,9 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@stitches/core@1.2.8': {}
-
   '@supabase/auth-js@2.103.0':
     dependencies:
       tslib: 2.8.1
-
-  '@supabase/auth-ui-shared@0.1.8(@supabase/supabase-js@2.103.0)':
-    dependencies:
-      '@supabase/supabase-js': 2.103.0
-
-  '@supabase/auth-ui-svelte@0.2.9(@supabase/supabase-js@2.103.0)':
-    dependencies:
-      '@stitches/core': 1.2.8
-      '@supabase/auth-ui-shared': 0.1.8(@supabase/supabase-js@2.103.0)
-      '@supabase/supabase-js': 2.103.0
-      svelte: 3.59.2
 
   '@supabase/functions-js@2.103.0':
     dependencies:
@@ -2350,8 +2314,6 @@ snapshots:
       semver: 7.7.4
     optionalDependencies:
       svelte: 5.55.3(@typescript-eslint/types@8.58.2)
-
-  svelte@3.59.2: {}
 
   svelte@5.55.3(@typescript-eslint/types@8.58.2):
     dependencies:
