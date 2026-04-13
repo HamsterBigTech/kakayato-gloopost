@@ -17,7 +17,7 @@ that put it's URL and key into the `.env` file (an example can be found in
 `.env.example`).
 
 This project uses pnpm v10.8.0 as the package manager. It can be installed with
-corepack or alternatively via nix (`flake.nix` provides a dev-shell).
+corepack.
 
 To install dependencies run:
 
