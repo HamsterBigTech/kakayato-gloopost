@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { type Book, bookCtx } from '$lib/service/book';
 	import { sessionCtx } from '$lib/service/session';
+	import { resolve } from '$app/paths';
 	import BookView from '$lib/components/book.svelte';
 
 	const books = bookCtx.get();
@@ -13,7 +14,7 @@
 	let selectedBook = $state(new Promise<Book>(() => {}));
 
 	$effect(() => {
-		if (session.session === null) goto('/login');
+		if (session.session === null) goto(resolve('/login'));
 	});
 
 	onMount(() => {

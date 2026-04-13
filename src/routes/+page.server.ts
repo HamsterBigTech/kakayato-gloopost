@@ -6,5 +6,5 @@ export type BookQuote = {
 
 export async function load(): Promise<BookQuote> {
 	const resp = await fetch('https://recite-production.up.railway.app/api/v1/random');
-	return resp.json()
-};
+	return resp.json();
+}

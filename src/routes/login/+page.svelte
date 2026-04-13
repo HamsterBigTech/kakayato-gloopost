@@ -4,12 +4,13 @@
 	import { ThemeSupa } from '@supabase/auth-ui-shared';
 	import { sessionCtx } from '$lib/service/session';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 
 	const supabase = supabaseCtx.get();
 	const session = sessionCtx.get();
 
 	$effect(() => {
-		if (session.session !== null) goto('/');
+		if (session.session !== null) goto(resolve('/'));
 	});
 </script>
 
