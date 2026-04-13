@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import type { SupabaseClient, Session } from '@supabase/supabase-js';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { defaultClient, supabaseCtx } from '$lib/service/supabase';
 	import { sessionCtx } from '$lib/service/session';
 	import { bookCtx, BookService } from '$lib/service/book';
@@ -102,7 +103,7 @@
 			{#if session.session === null}
 				<button
 					class="transition p-3 rounded-md hover:bg-green-50 hover:text-green-900 active:bg-green-100 w-full text-left"
-					onclick={() => goto('/login')}
+					onclick={() => goto(resolve('/login'))}
 				>
 					<div class="flex flex-row gap-2">
 						<svg
